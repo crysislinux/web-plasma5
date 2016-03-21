@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+
+const propTypes = {
+  children: PropTypes.node
+};
 
 /* eslint-disable  react/prefer-stateless-function */
 class App extends Component {
+  static propTypes = propTypes;
   render() {
+    const { children } = this.props;
+
     return (
       <div>
-        Hello Plasma 5
+        { children }
       </div>
     );
   }

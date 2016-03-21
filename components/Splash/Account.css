@@ -1,0 +1,37 @@
+.account {
+  width: 84px;
+  height: 106px;
+  outline: 1px dotted red;
+}
+
+.logoContainer {
+  width: 84px;
+  height: 84px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  width: 70%;
+  height: 70%;
+  opacity: 0.6;
+  display: block;
+  margin: 0 auto;
+}
+
+.activeLogImage {
+  composes: logoImage;
+  height: 100%;
+  width: 100%;
+  margin-top: 0;
+  opacity: 1;
+}
+
+.name {
+  height: 22px;
+  line-height: 22px;
+  font-size: 13px;
+  text-align: center;
+  color: white;
+}

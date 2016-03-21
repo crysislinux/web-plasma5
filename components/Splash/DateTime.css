@@ -1,0 +1,16 @@
+.datetime {
+  text-align: right;
+  color: white;
+  width: 100%;
+}
+
+.time {
+  font-size: 46px;
+  letter-spacing: 1px;
+}
+
+.date {
+  text-align: right;
+  font-size: 13px;
+  margin-top: 6px;
+}
