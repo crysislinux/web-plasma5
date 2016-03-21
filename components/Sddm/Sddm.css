@@ -26,14 +26,6 @@
   opacity: 0.9;
 }
 
-.accounts {
-  display: flex;
-}
-
-.account {
-  margin-right: 30px;
-}
-
 .divider {
   width: 100%;
   height: 0;
@@ -44,8 +36,12 @@
 .bottom {
   display: flex;
   align-items: center;
-  height: 80px;
+  height: 59px;
   position: relative;
+}
+
+.desktopSelector {
+  margin-left: 20px;
 }
 
 .password {
@@ -55,6 +51,7 @@
   transform: translate(-50%, -50%);
 }
 
-.reboot {
+.control {
   margin-left: auto;
+  margin-right: 20px;
 }

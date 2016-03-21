@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
-import Account from './Account';
+import Accounts from './Accounts';
 import DateTime from './DateTime';
 import DesktopSelector from './DesktopSelector';
 import Background from '../Background';
-import styles from './Splash.css';
+import Login from './Login';
+import Control from './Control';
+import styles from './Sddm.css';
 
 const propTypes = {
   accounts: PropTypes.array.isRequired,
-  onAccountClick: PropTypes.func.isRequired,
   windowWidth: PropTypes.number.isRequired,
   background: PropTypes.string.isRequired
 };
@@ -19,7 +20,7 @@ function calcAccountsWidth(windowWidth) {
   return accountWidth + accountGutter + accountWidth / 2 + windowWidth / 2;
 }
 
-export default function Splash({ accounts, onAccountClick, windowWidth, background }) {
+export default function Sddm({ accounts, windowWidth, background }) {
   const accountsWidth = calcAccountsWidth(windowWidth);
   const datetimeWidth = windowWidth - accountsWidth;
   return (
@@ -31,23 +32,21 @@ export default function Splash({ accounts, onAccountClick, windowWidth, backgrou
               <DateTime datetime={'2016-03-21'} />
             </div>
             <div className={styles.accounts} style={{ width: accountsWidth }}>
-              { accounts.map(a =>
-                (
-                  <div key={a.id} className={styles.account}>
-                    <Account active={a.active} account={a} onClick={onAccountClick} />
-                  </div>
-                ))
-              }
+              <Accounts accounts={accounts} />
             </div>
           </div>
           <div className={styles.divider}></div>
           <div className={styles.bottom}>
             <div className={styles.desktopSelector}>
-              <DesktopSelector />
+              <DesktopSelector selecting={false} environments={['Plasma', 'Plasma Media Center']} />
             </div>
 
-            <div className={styles.password}>mmmmmmmmm</div>
-            <div className={styles.reboot}>right</div>
+            <div className={styles.password}>
+              <Login />
+            </div>
+            <div className={styles.control}>
+              <Control />
+            </div>
           </div>
         </div>
       </div>
@@ -55,4 +54,4 @@ export default function Splash({ accounts, onAccountClick, windowWidth, backgrou
   );
 }
 
-Splash.propTypes = propTypes;
+Sddm.propTypes = propTypes;

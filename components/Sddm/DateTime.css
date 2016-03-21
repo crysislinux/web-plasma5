@@ -5,12 +5,13 @@
 }
 
 .time {
-  font-size: 46px;
+  font-size: 42px;
   letter-spacing: 1px;
 }
 
 .date {
   text-align: right;
-  font-size: 13px;
+  font-size: 12px;
   margin-top: 6px;
+  opacity: 0.7;
 }

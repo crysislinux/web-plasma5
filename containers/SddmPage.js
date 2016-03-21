@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Splash from '../components/Splash';
+import Sddm from '../components/Sddm';
 import backgroundImage from '../assets/images/background.png';
+import accountLogo from '../assets/images/default.face.icon.png';
 
 const accounts = [
   {
     id: 1,
     name: 'lg',
-    icon: 'http://img4.duitang.com/uploads/blog/201307/17/20130717220646_FxWvw.png',
+    icon: accountLogo,
     active: false,
   },
   {
     id: 2,
     name: 'mmmm',
-    icon: 'http://imgsrc.baidu.com/forum/w%3D580/sign=19fe6a8c6609c93d07f20effaf3ff8bb/fb289f99a9014c08beef08270b7b02087af4f46c.jpg',
+    icon: accountLogo,
     active: true,
   }
 ];
 
-class SplashPage extends Component {
+class SddmPage extends Component {
   constructor(props) {
     super(props);
     this.state = { windowWidth: window.innerWidth };
@@ -43,14 +44,12 @@ class SplashPage extends Component {
 
   render() {
     return (
-      <div>
-        <Splash
-          onAccountClick={this.handleAccountClick}
-          accounts={accounts}
-          windowWidth={this.state.windowWidth}
-          background={backgroundImage}
-        />
-      </div>
+      <Sddm
+        onAccountClick={this.handleAccountClick}
+        accounts={accounts}
+        windowWidth={this.state.windowWidth}
+        background={backgroundImage}
+      />
     );
   }
 }
@@ -61,4 +60,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
 
-})(SplashPage);
+})(SddmPage);
