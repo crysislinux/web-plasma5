@@ -40,6 +40,9 @@ module.exports = {
     }, {
       test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
       loader: "url?limit=10000&mimetype=image/svg+xml"
+    }, {
+      test: /\.(jpg|jpeg|png)$/,
+      loader: "url?limit=10000&minetype=image/jpg"
     }]
   }
 };
