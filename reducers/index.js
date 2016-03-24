@@ -12,19 +12,6 @@ function entities(state = { users: {} }, action) {
   return state;
 }
 
-// Updates error message to notify about the failed fetches.
-function errorMessage(state = null, action) {
-  const { type, error } = action;
-
-  if (type === ActionTypes.RESET_ERROR_MESSAGE) {
-    return null;
-  } else if (error) {
-    return action.error;
-  }
-
-  return state;
-}
-
 function app(state = { bootstraped: false }, action) {
   const { type } = action;
 
@@ -40,7 +27,6 @@ function app(state = { bootstraped: false }, action) {
 const rootReducer = combineReducers({
   app,
   entities,
-  errorMessage,
   routing,
 });
 
