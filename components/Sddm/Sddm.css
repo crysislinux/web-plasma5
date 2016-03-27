@@ -16,8 +16,8 @@
   display: flex;
   width: 100%;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 44px;
+  padding: 20px 20px 44px 20px;
+  box-sizing: border-box;
 }
 
 .datetime {
@@ -38,10 +38,12 @@
   align-items: center;
   height: 59px;
   position: relative;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .desktopSelector {
-  margin-left: 20px;
+
 }
 
 .password {
@@ -53,5 +55,4 @@
 
 .control {
   margin-left: auto;
-  margin-right: 20px;
 }

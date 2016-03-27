@@ -1,29 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Sddm from '../components/Sddm';
 import backgroundImage from '../assets/images/background.png';
-import accountLogo from '../assets/images/default.face.icon.png';
+import {
+  activateAccount,
+} from '../actions';
 
-const accounts = [
-  {
-    id: 1,
-    name: 'lg',
-    icon: accountLogo,
-    active: false,
-  },
-  {
-    id: 2,
-    name: 'mmmm',
-    icon: accountLogo,
-    active: true,
-  }
-];
+const propTypes = {
+  accounts: PropTypes.array.isRequired,
+  activateAccount: PropTypes.func.isRequired,
+};
 
 class SddmPage extends Component {
   constructor(props) {
     super(props);
     this.state = { windowWidth: window.innerWidth };
     this.handleResize = this.handleResize.bind(this);
+    this.handleAccountClick = this.handleAccountClick.bind(this);
   }
 
   handleResize() {
@@ -38,11 +31,14 @@ class SddmPage extends Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  handleAccountClick = () => {
-
-  };
+  handleAccountClick(account) {
+    console.log('haha', account);
+    this.props.activateAccount(account);
+  }
 
   render() {
+    const { accounts } = this.props;
+
     return (
       <Sddm
         onAccountClick={this.handleAccountClick}
@@ -54,10 +50,16 @@ class SddmPage extends Component {
   }
 }
 
+SddmPage.propTypes = propTypes;
+
 function mapStateToProps(state) {
-  return state;
+  const { account } = state;
+
+  return {
+    accounts: account.ids.map(id => account.entities[id])
+  };
 }
 
 export default connect(mapStateToProps, {
-
+  activateAccount,
 })(SddmPage);

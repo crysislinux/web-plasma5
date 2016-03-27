@@ -13,6 +13,10 @@
     "react/sort-comp": 0,
     "react/no-multi-comp": 0,
     "react/prefer-stateless-function": 0,
+    "react/jsx-no-bind": [2, {
+      'ignoreRefs': true,
+      'allowArrowFunctions': true,
+    }],
     "comma-dangle": 0,
     "id-length": 0,
     "new-cap": 0,

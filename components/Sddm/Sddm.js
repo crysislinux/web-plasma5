@@ -10,19 +10,22 @@ import styles from './Sddm.css';
 const propTypes = {
   accounts: PropTypes.array.isRequired,
   windowWidth: PropTypes.number.isRequired,
-  background: PropTypes.string.isRequired
+  background: PropTypes.string.isRequired,
+  onAccountClick: PropTypes.func.isRequired,
 };
 
 const accountWidth = 84;
 const accountGutter = 30;
+const idleSpace = 20;
 
-function calcAccountsWidth(windowWidth) {
-  return accountWidth + accountGutter + accountWidth / 2 + windowWidth / 2;
+function calcAccountsWidth(contentWidth) {
+  return accountWidth + accountGutter + accountWidth / 2 + contentWidth / 2;
 }
 
-export default function Sddm({ accounts, windowWidth, background }) {
-  const accountsWidth = calcAccountsWidth(windowWidth);
-  const datetimeWidth = windowWidth - accountsWidth;
+export default function Sddm({ accounts, windowWidth, background, onAccountClick }) {
+  const contentWidth = windowWidth - idleSpace * 2;
+  const accountsWidth = calcAccountsWidth(contentWidth);
+  const datetimeWidth = contentWidth - accountsWidth;
   return (
     <Background image={background}>
       <div className={styles.wrapper}>
@@ -32,7 +35,10 @@ export default function Sddm({ accounts, windowWidth, background }) {
               <DateTime datetime={'2016-03-21'} />
             </div>
             <div className={styles.accounts} style={{ width: accountsWidth }}>
-              <Accounts accounts={accounts} />
+              <Accounts
+                accounts={accounts}
+                onAccountClick={onAccountClick}
+              />
             </div>
           </div>
           <div className={styles.divider}></div>

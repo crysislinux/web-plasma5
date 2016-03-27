@@ -1,42 +1,63 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { Motion, spring } from 'react-motion';
+import Account from './Account';
 import styles from './Accounts.css';
-
-const accountPropTypes = {
-  account: PropTypes.object.isRequired,
-  active: PropTypes.bool,
-};
 
 const accountsPropTypes = {
   accounts: PropTypes.array.isRequired,
+  onAccountClick: PropTypes.func.isRequired,
 };
 
-function Account({ account, active }) {
-  const logoClass = active ? styles.activeLogoImage : styles.logoImage;
-  const logoContainerClass = active ? styles.activeLogoContainer : styles.logoContainer;
-  return (
-    <div className={styles.account}>
-      <div className={styles.wrapper}>
-        <div className={logoContainerClass}>
-          <img className={logoClass} src={account.icon} />
-        </div>
-      </div>
-      <div className={styles.name}>{account.name}</div>
-    </div>
-  );
-}
+export default class Accounts extends Component {
+  constructor(props) {
+    super(props);
+    this.handleAccountClick = this.handleAccountClick.bind(this);
+  }
 
-Account.propTypes = accountPropTypes;
+  handleAccountClick(account) {
+    this.props.onAccountClick(account);
+  }
 
-export default function Accounts({ accounts }) {
-  return (
-    <div className={styles.accounts}>
-      {accounts.map(a =>
-        (
-          <Account key={a.id} active={a.active} account={a} />
-        ))
-      }
-    </div>
-  );
+  getActiveAccountIndex(accounts) {
+    return accounts.findIndex(account => !!account.active);
+  }
+
+  calcTranslateX(activeAccountIndex) {
+    const fixedIndex = 1;
+    const accountWidth = 84;
+    const accountGutter = 30;
+    const diff = fixedIndex - activeAccountIndex;
+
+    return diff * (accountWidth + accountGutter);
+  }
+
+  render() {
+    const { accounts } = this.props;
+    const index = this.getActiveAccountIndex(accounts);
+    const translateX = this.calcTranslateX(index);
+
+    return (
+      <Motion style={{ x: spring(translateX) }}>
+        {({ x }) => // eslint-disable-line react/prop-types
+          <div className={styles.wrapper}>
+            <div className={styles.accounts} style={{ transform: `translateX(${x}px)` }}>
+              {accounts.map(a =>
+                (
+                  <div className={styles.account} key={a.id}>
+                    <Account
+                      active={a.active}
+                      account={a}
+                      onClick={() => this.handleAccountClick(a)}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        }
+      </Motion>
+    );
+  }
 }
 
 Accounts.propTypes = accountsPropTypes;
