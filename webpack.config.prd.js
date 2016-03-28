@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -7,12 +8,16 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     publicPath: '/'
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      inject: 'body'
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
