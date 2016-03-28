@@ -5,3 +5,4 @@ lib
 coverage
 _book
 tmp.js
+/dist
