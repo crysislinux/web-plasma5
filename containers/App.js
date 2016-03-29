@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import '../assets/styles/global.css';
 
 const propTypes = {
   children: PropTypes.node
