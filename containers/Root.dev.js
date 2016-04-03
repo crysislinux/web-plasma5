@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import 'react-addons-perf';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import routes from '../routes';

@@ -25,6 +25,9 @@ module.exports = {
   ],
   module: {
     loaders: [{
+      test: require.resolve("react-addons-perf"),
+      loader: "expose?Perf"
+    }, {
       test: /\.js$/,
       loaders: ['babel'],
       exclude: /node_modules/,
