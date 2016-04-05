@@ -3,7 +3,7 @@ import styles from './Background.css';
 
 const propTypes = {
   image: PropTypes.string.isRequired,
-  children: PropTypes.object
+  children: PropTypes.node
 };
 
 // background stretch to full width and height of the screen
