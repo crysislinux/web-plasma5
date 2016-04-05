@@ -1,0 +1,28 @@
+.screenLocker {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: hsla(240, 18%, 20%, .8);
+  overflow: hidden;
+}
+
+.top {
+  width: 100%;
+  height: 168px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.divider {
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid white;
+  opacity: 0.4;
+}
+
+.bottom {
+  height: 60px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}

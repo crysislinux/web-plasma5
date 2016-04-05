@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ScreenLockerPanel from '../ScreenLockerPanel';
 import Accounts from './Accounts';
 import DateTime from './DateTime';
 import DesktopSelector from './DesktopSelector';
@@ -29,7 +30,7 @@ export default function Sddm({ accounts, windowWidth, background, onAccountClick
   return (
     <Background image={background}>
       <div className={styles.wrapper}>
-        <div className={styles.splash}>
+        <ScreenLockerPanel>
           <div className={styles.top}>
             <div className={styles.datetime} style={{ width: datetimeWidth }}>
               <DateTime datetime={'2016-03-21'} />
@@ -41,7 +42,7 @@ export default function Sddm({ accounts, windowWidth, background, onAccountClick
               />
             </div>
           </div>
-          <div className={styles.divider}></div>
+
           <div className={styles.bottom}>
             <div className={styles.desktopSelector}>
               <DesktopSelector selecting={false} environments={['Plasma', 'Plasma Media Center']} />
@@ -54,7 +55,7 @@ export default function Sddm({ accounts, windowWidth, background, onAccountClick
               <Control />
             </div>
           </div>
-        </div>
+        </ScreenLockerPanel>
       </div>
     </Background>
   );

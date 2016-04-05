@@ -4,19 +4,10 @@
   align-items: center;
 }
 
-.splash {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: hsla(240, 18%, 20%, .8);
-  overflow: hidden;
-}
-
 .top {
   display: flex;
-  width: 100%;
   align-items: center;
-  padding: 20px 20px 44px 20px;
+  margin-top: 20px;
   box-sizing: border-box;
 }
 
@@ -35,11 +26,9 @@
 
 .bottom {
   display: flex;
+  height: 100%;
   align-items: center;
-  height: 59px;
   position: relative;
-  padding: 0 20px;
-  box-sizing: border-box;
 }
 
 .desktopSelector {
