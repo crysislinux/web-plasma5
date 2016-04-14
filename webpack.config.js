@@ -21,7 +21,6 @@ module.exports = {
       template: 'index.html',
       inject: 'body'
     }),
-    new webpack.NoErrorsPlugin(),
   ],
   module: {
     loaders: [{
