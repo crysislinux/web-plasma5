@@ -4,15 +4,14 @@ import styles from './Sddm.css';
 import SddmLoginContainer from '../../containers/SddmLoginContainer';
 
 const propTypes = {
-  windowWidth: PropTypes.number.isRequired,
   background: PropTypes.string.isRequired,
 };
 
-export default function Sddm({ windowWidth, background }) {
+export default function Sddm({ background }) {
   return (
     <Background image={background}>
       <div className={styles.wrapper}>
-        <SddmLoginContainer windowWidth={windowWidth} />
+        <SddmLoginContainer />
       </div>
     </Background>
   );

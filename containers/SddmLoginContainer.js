@@ -9,22 +9,40 @@ import {
 const propTypes = {
   accounts: PropTypes.array.isRequired,
   activateAccount: PropTypes.func.isRequired,
-  windowWidth: PropTypes.number.isRequired,
 };
 
 class SddmLoginContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { windowWidth: window.innerWidth };
+    this.handleResize = this.handleResize.bind(this);
+    this.handleAccountClick = this.handleAccountClick.bind(this);
+  }
+
+  handleResize() {
+    this.setState({ windowWidth: window.innerWidth });
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   handleAccountClick(account) {
     this.props.activateAccount(account);
   }
 
   render() {
-    const { accounts, windowWidth } = this.props;
+    const { accounts } = this.props;
 
     return (
       <SddmLogin
         onAccountClick={this.handleAccountClick}
         accounts={accounts}
-        windowWidth={windowWidth}
+        windowWidth={this.state.windowWidth}
       />
     );
   }
@@ -32,12 +50,11 @@ class SddmLoginContainer extends Component {
 
 SddmLoginContainer.propTypes = propTypes;
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   const { account } = state;
 
   return {
     accounts: account.ids.map(id => account.entities[id]),
-    windowWidth: props.windowWidth,
   };
 }
 

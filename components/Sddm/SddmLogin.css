@@ -1,0 +1,41 @@
+.top {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.datetime {
+  padding-right: 20px;
+  box-sizing: border-box;
+  opacity: 0.9;
+}
+
+.divider {
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid white;
+  opacity: 0.4;
+}
+
+.bottom {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.desktopSelector {
+
+}
+
+.password {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.control {
+  margin-left: auto;
+}

@@ -5,7 +5,7 @@ import DateTime from './DateTime';
 import DesktopSelector from './DesktopSelector';
 import Login from './Login';
 import Control from './Control';
-import styles from './Sddm.css';
+import styles from './SddmLogin.css';
 
 const propTypes = {
   accounts: PropTypes.array.isRequired,
