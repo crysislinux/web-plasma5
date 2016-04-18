@@ -51,6 +51,10 @@ function ids(state = [1, 2, 3, 4, 5, 6, 7, 8], action) {
   return state;
 }
 
+function loading(state = false, action) {
+  return state;
+}
+
 function entities(state = tempAccounts, action) {
   const { type, account } = action;
 
@@ -75,5 +79,6 @@ function entities(state = tempAccounts, action) {
 
 export default combineReducers({
   ids,
+  loading,
   entities
 });

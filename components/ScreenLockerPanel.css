@@ -1,5 +1,6 @@
 .screenLocker {
   display: flex;
+  width: 100%;
   flex-direction: column;
   position: relative;
   background: hsla(240, 18%, 20%, .8);

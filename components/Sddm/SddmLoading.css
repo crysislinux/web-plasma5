@@ -1,0 +1,20 @@
+@keyframes move {
+    from { right: 0; }
+    to { right: 50%; }
+}
+
+.moving {
+  position: absolute;
+  transform: translateX(50%);
+  animation: move 1.2s forwards;
+}
+
+.logo {
+  composes: moving;
+  margin-top: 16px;
+}
+
+.progressBar {
+  composes: moving;
+  margin-top: 26px;
+}

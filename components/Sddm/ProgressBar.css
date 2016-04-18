@@ -1,0 +1,12 @@
+.bar {
+  width: 280px;
+  height: 8px;
+  background: #31363B;
+  border-radius: 20px;
+}
+
+.fill {
+  background: #41ADE7;
+  height: 100%;
+  border-radius: 20px;
+}
