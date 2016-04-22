@@ -52,7 +52,14 @@ function ids(state = [1, 2, 3, 4, 5, 6, 7, 8], action) {
 }
 
 function loading(state = false, action) {
-  return state;
+  const { type } = action;
+
+  switch (type) {
+    case ActionTypes.LOGIN_SUCCESS:
+      return true;
+    default:
+      return state;
+  }
 }
 
 function entities(state = tempAccounts, action) {
@@ -77,8 +84,20 @@ function entities(state = tempAccounts, action) {
   }
 }
 
+function token(state = null, action) {
+  const { type } = action;
+
+  switch (type) {
+    case ActionTypes.LOGIN_SUCCESS:
+      return action.token;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   ids,
   loading,
-  entities
+  entities,
+  token,
 });

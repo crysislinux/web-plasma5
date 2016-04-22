@@ -11,6 +11,7 @@ const propTypes = {
   accounts: PropTypes.array.isRequired,
   windowWidth: PropTypes.number.isRequired,
   onAccountClick: PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
 };
 
 const accountWidth = 84;
@@ -21,7 +22,7 @@ function calcAccountsWidth(contentWidth) {
   return accountWidth + accountGutter + accountWidth / 2 + contentWidth / 2;
 }
 
-export default function SddmLogin({ accounts, windowWidth, onAccountClick }) {
+export default function SddmLogin({ accounts, windowWidth, onAccountClick, onLoginClick }) {
   const contentWidth = windowWidth - idleSpace * 2;
   const accountsWidth = calcAccountsWidth(contentWidth);
   const datetimeWidth = contentWidth - accountsWidth;
@@ -45,7 +46,7 @@ export default function SddmLogin({ accounts, windowWidth, onAccountClick }) {
         </div>
 
         <div className={styles.password}>
-          <Login />
+          <Login onLoginClick={onLoginClick} />
         </div>
         <div className={styles.control}>
           <Control />

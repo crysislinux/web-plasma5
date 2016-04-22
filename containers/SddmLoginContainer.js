@@ -4,11 +4,13 @@ import SddmLogin from '../components/Sddm/SddmLogin';
 
 import {
   activateAccount,
+  login,
 } from '../actions';
 
 const propTypes = {
   accounts: PropTypes.array.isRequired,
   activateAccount: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 class SddmLoginContainer extends Component {
@@ -17,6 +19,7 @@ class SddmLoginContainer extends Component {
     this.state = { windowWidth: window.innerWidth };
     this.handleResize = this.handleResize.bind(this);
     this.handleAccountClick = this.handleAccountClick.bind(this);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
   }
 
   handleResize() {
@@ -35,6 +38,15 @@ class SddmLoginContainer extends Component {
     this.props.activateAccount(account);
   }
 
+  handleLoginClick() {
+    const { accounts } = this.props;
+    for (let i = 0; i < accounts.length; i++) {
+      if (accounts[i].active) {
+        this.props.login(accounts[i].name, accounts[i].password);
+      }
+    }
+  }
+
   render() {
     const { accounts } = this.props;
 
@@ -43,6 +55,7 @@ class SddmLoginContainer extends Component {
         onAccountClick={this.handleAccountClick}
         accounts={accounts}
         windowWidth={this.state.windowWidth}
+        onLoginClick={this.handleLoginClick}
       />
     );
   }
@@ -60,4 +73,5 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   activateAccount,
+  login,
 })(SddmLoginContainer);
